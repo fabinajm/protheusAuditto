@@ -1,60 +1,18 @@
-theme: jekyll-theme-architect
-
-Skip to content
-Pull requests
-Issues
-Marketplace
-Explore
-@fabinajm
-
-97,796
-26
-483
-
-    1,368
-
-pages-themes/cayman
-Code
-Issues 4
-Pull requests 1
-Security
-Insights
-cayman/index.md
-@parkr parkr Fix linting errors & fix GitHub asset URL d4cdac1 29 days ago
-@benbalter
-@parkr
-124 lines (89 sloc) 2.53 KB
-layout
-default
-
-Text can be bold, italic, or strikethrough.
-
-Link to another page.
-
-There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
-Header 1
-
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-Header 2
-
-    This is a blockquote following a header.
-
-    When something is important enough, you do it even if the odds are not in your favor.
-
-Header 3
-
 // Javascript code with syntax highlighting.
 var fun = function lang(l) {
   dateformat.i18n = require('./lang/' + l)
   return true;
 }
 
-# Ruby code with syntax highlighting
+
 GitHubPages::Dependencies.gems.each do |gem, version|
   s.add_dependency(gem, "= #{version}")
 end
+
+
+# Instalador de Programas
+
+    Aqui você pode colocar o que é o instalador de programas
 
 Header 4
 
