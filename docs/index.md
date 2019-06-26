@@ -1,3 +1,4 @@
+theme: jekyll-theme-architect
 
 Skip to content
 Pull requests
