@@ -7,12 +7,13 @@
 }
 
 .subtit{
-    color: red;
+    color: darkblue;
+    margin: 40px;
 }
 
 .box {
     width: 400px;
-    height: 200px;
+    height: 220px;
     border: solid 1px #ccc;
     color: rgba(0, 0, 0, 0.87);
     cursor: copy;

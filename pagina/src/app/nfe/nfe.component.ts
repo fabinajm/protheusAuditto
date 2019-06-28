@@ -2,69 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nfe',
-  template: `
-    <p>
-      nfe works!
-    </p>
-
-    teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-teste<br>
-  `,
-  styles: []
+  templateUrl: './nfe.component.html',
+  styleUrls: ['./nfe.component.css']
 })
 export class NfeComponent implements OnInit {
 

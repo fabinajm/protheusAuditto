@@ -1,0 +1,173 @@
+<h1 class="titulo" >
+
+    <div fxLayout="col" fxLayoutAlign="center start" fxLayoutGap="30px">
+        <span>Integrador</span>         
+    </div>
+    
+</h1>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Existe um programa responsável por todo o processo de integração, pois ele executa os demais programas, para isso se faz necessária a configuração dele por job.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Pré-Requisitos: Instalador rodado e patch de algum documento de integração aplicada e configure a chave SSLConfigure no appserver.ini.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Configure o programa U_XMLJJ001 para execução via Job recomenda-se um intervalo de 30 minutos para execução.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Existe mais de uma forma para configuração do Job:
+</div>
+
+<ul class="text">
+    <li>Via execução do smartclient;</li>
+    <li>Via appserver.ini;</li>
+    <li>Via configurador;</li>
+</ul>
+
+<h2 class="subtit" >
+
+    <div fxLayout="col" fxLayoutAlign="start start" fxLayoutGap="30px">
+        <span>1) Via execução do smartclient:</span>         
+    </div>
+    
+</h2>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    O protheus pode ser executado sem tela, para isso você configura o atalho para execução por comando de linha, ficará assim:
+</div>
+
+<ul class='text'>
+    <li>No Windows: c:\totvs\smartclient\smartclient.exe -q -m -c=tcp -e=local -p=U_XMLJJ001</li>
+    <li>No Linux: /totvs/smartclient/smartclient -m -q -m -c=tcp -e=local -p=U_XMLJJ001</li>
+</ul>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Você pode agendar no seu servidor a execução do comando no tempo que precisar e verificar a correta execução no console.log.
+</div>
+
+<h2 class="subtit" >
+
+    <div fxLayout="col" fxLayoutAlign="start start" fxLayoutGap="30px">
+        <span>2) Via appserver.ini:</span>         
+    </div>
+    
+</h2>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Você pode executar o programa em um serviço de appserver do servidor, abra o arquivo appserver.ini, e inclua as chaves:
+</div>
+
+<textarea class="box" readonly="true" >
+
+	[OnStart]
+	Jobs=IntAudit
+	RefreshRate=1800
+
+	[IntAudit]
+	Main=U_XMLJJ001
+	Environment=local
+ </textarea>
+
+ <div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Reinicie o serviço e verifique a chamada da execução no console.log.
+</div>
+ 
+<h2 class="subtit" >
+
+    <div fxLayout="col" fxLayoutAlign="start start" fxLayoutGap="30px">
+        <span>3) Via configurador:</span>         
+    </div>
+    
+</h2>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Recomenda-se criar um serviço só para o schedule do Protheus, segue a demonstração de como configurar e agendar uma execução.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Primeiro acesse o configurador do Protheus:
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/smart_inicial_cfg.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Acesse Ambiente -> Schedule -> Schedule
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/cfg_sch.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Clique no (+) do Agent -> Cadastro, Adicionar agente padrão.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/cfg_agent.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Agora clique em Agent -> Iniciar todos os serviços
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/cfg_agent_srv.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Clique também em Schedule -> Iniciar todos os serviços
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/cfg_sch_srv.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Agora vamos cadastrar o agendamento, vá para Agendamentos -> Cadastro, rola a barra e em detalhes aperte no (+) Incluir.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/sch_agend_cad.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Preencha as informações, rotina com U_XMLJJ001, hora, com o horário inicio do dia, colocarei 06:00, empresa/filial, faz necessário apenas uma para que ele execute, pois o programa varrerá o ponto de entrada da configuração, módulo nesse exemplo está como 02 - Compras.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/sch_agend_cad_inc.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Depois selecione Recorrência para configurar a quantidade de execuções no dia.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/sch_agend_cad_rec.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Está para rodar todos os dias da semana das 06:00 as 23:00, para isso selecionar “todos os dias da semana”, em Número de Execuções colocar 0035 e intervalo 00:30, alterar data de término para “Sem data de término”
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/sch_agend_cad_rec_inc.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Confirme a recorrência e a gravação do cadastros.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/sch_agend.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Recomendação: Sempre confira a execução do programa no console.log do appserver utilizado caso ocorra algum erro, copie e abra um chamado com o nosso canal de atendimento.
+</div>

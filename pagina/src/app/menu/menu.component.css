@@ -36,10 +36,12 @@
    }
  }
 
-/*
+
  a:hover, a:active{
    color: lightgray;
+   text-decoration: none;
 }
+/*
  .mat-sidenav-container {
    display: flex;
    flex-direction: column;

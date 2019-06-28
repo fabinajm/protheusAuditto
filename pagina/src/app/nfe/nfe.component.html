@@ -1,0 +1,103 @@
+<h1 class="titulo" >
+
+    <div fxLayout="col" fxLayoutAlign="center start" fxLayoutGap="30px">
+        <span>Nota Fiscal</span>         
+    </div>
+
+    <div fxLayout="col" fxLayoutAlign="center start" fxLayoutGap="30px">
+        <span>Eletrônica</span>         
+    </div>
+    
+</h1>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Essa rotina faz a Integração dos dados de XML e as configurações fiscais do Auditto para o Protheus, na importação dos dados o Protheus gera a nota fiscal de entrada já classificada, para isso a conversão e destinação precisam estar preenchidas no Auditto.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    O sistema busca via API as notas ficais convertidas na Auditto, essa conversão pode ser realizada na confirmação de entrada da nota (check-in), assim o trabalho é simples podendo ser realizado por quem recebe o material e saiba para que será utilizado.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    O Protheus com base nas regras fiscais do Auditto, utiliza uma TES que atenda as configurações ou a cria caso não exista, ele também cria exceção fiscal caso seja necessário, tudo para que o Fiscal fique correto. As duplicatas são carregadas conforme o XML e caso não exista uma condição de pagamento que atenda as configurações o sistema também a cria.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Pré-Requisitos: Instalador rodado, Integrador configurado, patch de NFE compilada, acesso ao Auditto criado, conversor auditto executado.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Acesse o Auditto ->Gestor Fiscal
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/auditto_opc.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Check-In
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/auditto_chkin.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Realize a leitura do código de barras, informe a destinação, confira as informações e confirme a entrada.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/auditto_chkin_cdb_1.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/auditto_chkin_cdb_2.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    O programa fará a leitura das notas registradas e processará a entrada automaticamente, você pode acompanhar o processo pela tabela informada no configurador.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/auditto_acmp_1.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/auditto_acmp_2.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Caso dê algum erro o sistema gravará o retorno na tabela para que possa ser analisado, quando o Job for executado novamente a nota com problema será reprocessada.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/auditto_acmp_3.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/auditto_acmp_4.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    A base utilizada estava sem informação, veja o cadastro de TES após o término do processamento:
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/cad_tes.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Veja os documentos de entrada:
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/cad_nfe.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/nfe_det.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Recomendação: Coloque primeiro o processo para rodar em uma base de testes e confira com a sua base de produção se a nota está correta, o sistema não incluirá uma mesma nota novamente, apenas mudará o status na tabela avisando-o que a nota foi incluída manualmente.
+</div>

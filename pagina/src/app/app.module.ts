@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { InstaladorComponent } from './instalador/instalador.component';
+import { IntegradorComponent } from './integrador/integrador.component';
+import { NfeComponent } from './nfe/nfe.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { InstaladorComponent } from './instalador/instalador.component';
     MenuComponent,
     routingComponents,
     HomeComponent,
-    InstaladorComponent
+    InstaladorComponent,
+    IntegradorComponent,
+    NfeComponent
   ],
   imports: [
     BrowserModule,
