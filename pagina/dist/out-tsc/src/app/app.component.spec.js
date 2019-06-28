@@ -17,16 +17,16 @@ describe('AppComponent', () => {
         const app = fixture.debugElement.componentInstance;
         expect(app).toBeTruthy();
     });
-    it(`should have as title 'docs'`, () => {
+    it(`should have as title 'Audit.& Prot'`, () => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.debugElement.componentInstance;
-        expect(app.title).toEqual('docs');
+        expect(app.title).toEqual('Audit.& Prot');
     });
     it('should render title in a h1 tag', () => {
         const fixture = TestBed.createComponent(AppComponent);
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('h1').textContent).toContain('Welcome to docs!');
+        expect(compiled.querySelector('h1').textContent).toContain('Bem vindo a integração Auditto & Protheus!');
     });
 });
 //# sourceMappingURL=app.component.spec.js.map

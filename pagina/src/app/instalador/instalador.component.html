@@ -1,0 +1,69 @@
+<h1 class="titulo" >
+
+    <div fxLayout="col" fxLayoutAlign="center start" fxLayoutGap="30px">
+        <span>Instalador</span>         
+    </div>
+    
+</h1>
+    
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Neste tutorial explicaremos como funciona o processo de instalação da integração Protheus & Auditto, esse programa criará os dicionários de dados de estrutura para processamento da integração.
+</div>
+    
+<div class="text" fxLayout="row" fxLayoutAlign="start start">
+    Pré-Requisitos: Aplique a patch de instação da integração, crie o programa XMLPU001.prw com as empresas do sigamat.emp que farão parte da integração e solicite seu usuário e senha de api da Auditto.
+</div>
+    
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Programa XMLPU001:
+</div>
+ 
+<textarea class="box" readonly="true" >
+
+
+
+   User Function XMLPU001
+
+   //array com o código das empresas (M0_CODIGO)
+   Local aEmp := {"01",”02”,”99”}
+
+            
+   Return aEmp
+
+</textarea>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Abra o smartclient e no lugar da chamada de programa inicial preencha U_XMLAM001 e clique em Ok.
+</div>      
+
+<div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="/assets/img/smart_inicial.png"  />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    A tela de configuração é para que o sistema crie os dicionários para as empresas selecionadas levando em consideração a sua tabelas existentes. Preencha todas as informações da tela e confirme.
+</div>      
+    
+<div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="/assets/img/tela_inst_sem_parm.png"  />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Exemplo de preenchimento:
+</div>      
+        
+<div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="/assets/img/tela_inst_com_parm.png"  />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Recomendação: Confira a geração dos dicionários de dados SX2, SX3, SIX e SX6.
+</div>      
+            
+<div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="/assets/img/inst_sx6.png"  />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px" >
+        <img src="/assets/img/inst_sx3.png"  />
+</div>

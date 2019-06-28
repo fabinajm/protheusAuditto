@@ -1,21 +1,25 @@
-<mat-toolbar color="primary" class="mat-elevation-z4">
-    <mat-toolbar-row>
+<mat-toolbar color="primary" class="mat-elevation-z6">
+    <mat-toolbar-row>             
+      <span>Auditto & Protheus</span>       
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
-      <div fxShow="true" fxHide.lt-md="true" fxLayoutAlign="start center">
+      <span class="fill-remaining-space"></span>
+      <div fxShow="true" fxHide.lt-md="true" fxLayoutAlign="end center">
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-        <a routerLink="/instalador" routerLinkActive="active" mat-button>Instalador</a>
-        <a routerLink="/nfe" routerLinkActive="active" mat-button>NF-e</a>
+        <a (click)="setDocTitle( 'Home' )" routerLink="/home" routerLinkActive="active" mat-button>Home</a>
+        <a (click)="setDocTitle( 'Instalador' )" routerLink="/instalador" routerLinkActive="active" mat-button>Instalador</a>
+        <a (click)="setDocTitle( 'NF-e' )" routerLink="/nfe" routerLinkActive="active" mat-button>NF-e</a>
       </div>
-    </mat-toolbar-row>
+    </mat-toolbar-row>           
 </mat-toolbar>
 
-<mat-sidenav-container fxFlexFill>
-    <mat-sidenav #sidenav>
+<mat-sidenav-container class="main-sidenav-container">
+    <mat-sidenav #sidenav fullscreen>
       <mat-nav-list>
-        <a routerLink="/instalador" routerLinkActive="active" mat-list-item>Instalador</a>
-        <a routerLink="/nfe" routerLinkActive="active" mat-list-item>NF-e</a>
+        <a (click)="setDocTitle( 'Home' )" routerLink="/home" routerLinkActive="active" mat-list-item>Home</a>
+        <a (click)="setDocTitle( 'Instalador' )" routerLink="/instalador" routerLinkActive="active" mat-list-item>Instalador</a>
+        <a (click)="setDocTitle( 'NF-e' )" routerLink="/nfe" routerLinkActive="active" mat-list-item>NF-e</a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>    

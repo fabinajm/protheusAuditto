@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule, MatSidenavModule, MatListModule, MatButtonModule, MatIconModule} from '@angular/material'; 
@@ -7,12 +7,16 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
+import { HomeComponent } from './home/home.component';
+import { InstaladorComponent } from './instalador/instalador.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    routingComponents
+    routingComponents,
+    HomeComponent,
+    InstaladorComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,7 @@ import { MenuComponent } from './menu/menu.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

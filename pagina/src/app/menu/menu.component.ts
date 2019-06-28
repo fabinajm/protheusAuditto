@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-menu',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  titleCab = 'Audit.& Prot - ';
+
+  constructor(private titleService: Title) {}
+
+  setDocTitle(title: string) {
+     console.log('current title:::::' + this.titleService.getTitle());
+     this.titleService.setTitle(this.titleCab + title);
+  }
 
   ngOnInit() {
   }

@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-instalador',
-  template: `
-    <p>
-      instalador works!
-    </p>
-  `,
-  styles: []
+  templateUrl: './instalador.component.html',
+  styleUrls: ['./instalador.component.css']
 })
 export class InstaladorComponent implements OnInit {
 
