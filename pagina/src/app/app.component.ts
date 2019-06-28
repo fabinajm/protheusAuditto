@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {RouterModule,Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -14,11 +14,10 @@ export class AppComponent {
   constructor(private titleService: Title, private router: Router) {};
 
   ngOnInit() {
-    this.titleService.setTitle(this.title);    
 
-    setTimeout(() => {
-      this.router.navigate(["home"]);
-    }, 1);
+    this.titleService.setTitle(this.title);    
+    this.router.navigate(["home"]);
+
   }
 
 }
