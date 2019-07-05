@@ -16,11 +16,7 @@ export class AppComponent {
   ngOnInit() {
 
     this.titleService.setTitle(this.title); 
-    
-    if (this.router.url.search("home") < 0 )
-    {
-      this.router.navigate(["home"]);
-    }
+    this.router.navigate(["home"]);
 
   }
 

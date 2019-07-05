@@ -8,7 +8,7 @@ import { IntegradorComponent } from './integrador/integrador.component';
 const routes: Routes = [
   { path: 'instalador', component:InstaladorComponent },
   { path: 'nfe', component:NfeComponent },
-  { path: 'home', component:HomeComponent },
+  { path: 'home', component:HomeComponent, pathMatch: 'prefix' },
   { path: 'integrador', component:IntegradorComponent }
 ];
 
