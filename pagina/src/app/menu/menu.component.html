@@ -10,6 +10,7 @@
         <a (click)="setDocTitle( 'Home' )" routerLink="/home" routerLinkActive="active" mat-button>Home</a>
         <a (click)="setDocTitle( 'Instalador' )" routerLink="/instalador" routerLinkActive="active" mat-button>Instalador</a>
         <a (click)="setDocTitle( 'Integrador' )" routerLink="/integrador" routerLinkActive="active" mat-button>Integrador</a>
+        <a (click)="setDocTitle( 'Cadastros' )" routerLink="/cadastros" routerLinkActive="active" mat-button>Cadastros</a>
         <a (click)="setDocTitle( 'NF-e' )" routerLink="/nfe" routerLinkActive="active" mat-button>NF-e</a>
       </div>
     </mat-toolbar-row>           
@@ -21,10 +22,22 @@
         <a (click)="setDocTitle( 'Home' )" routerLink="/home" routerLinkActive="active" mat-list-item>Home</a>
         <a (click)="setDocTitle( 'Instalador' )" routerLink="/instalador" routerLinkActive="active" mat-list-item>Instalador</a>
         <a (click)="setDocTitle( 'Integrador' )" routerLink="/integrador" routerLinkActive="active" mat-list-item>Integrador</a>
+        <a (click)="setDocTitle( 'Cadastros' )" routerLink="/cadastros" routerLinkActive="active" mat-list-item>Cadastros</a>
         <a (click)="setDocTitle( 'NF-e' )" routerLink="/nfe" routerLinkActive="active" mat-list-item>NF-e</a>
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content fxFlexFill>    
-        <router-outlet></router-outlet>
+    <mat-sidenav-content fxFlexFill>
+        <mat-drawer-container>
+            <mat-drawer class="menuSide" mode="side" opened>
+                <a *ngFor="let navItem of mainMenuItems" 
+                   class="menuSide"
+                   [routerLink]="[navItem.path]" mat-button>
+                    {{navItem.title}}
+                </a>
+            </mat-drawer>
+            <mat-drawer-content>
+              <router-outlet></router-outlet>
+            </mat-drawer-content>
+        </mat-drawer-container>
     </mat-sidenav-content>
 </mat-sidenav-container>

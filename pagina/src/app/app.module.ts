@@ -11,6 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { InstaladorComponent } from './instalador/instalador.component';
 import { IntegradorComponent } from './integrador/integrador.component';
 import { NfeComponent } from './nfe/nfe.component';
+import { CadastrosComponent } from './cadastros/cadastros.component';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { NfeComponent } from './nfe/nfe.component';
     HomeComponent,
     InstaladorComponent,
     IntegradorComponent,
-    NfeComponent
+    NfeComponent,
+    CadastrosComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,9 @@ import { NfeComponent } from './nfe/nfe.component';
     MatButtonModule,
     FlexLayoutModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxPageScrollModule,
+    TextareaAutosizeModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]

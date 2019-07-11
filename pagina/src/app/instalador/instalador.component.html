@@ -11,14 +11,40 @@
 </div>
     
 <div class="text" fxLayout="row" fxLayoutAlign="start start">
-    Pré-Requisitos: Aplique a patch de instalação da integração, crie o programa XMLPU001.prw com as empresas do sigamat.emp que farão parte da integração e solicite seu usuário e senha de api da Auditto.
+    
+    <ul class="ul">Pré-Requisitos:
+    <li class="li">Aplique a patch de instalação da integração;</li>
+    <li class="li">Configure o SSLConfigure no aapserver.ini;</li>
+    <li class="li">Crie o programa XMLPU001.prw com as empresas do sigamat.emp que farão parte da integração;</li>
+    <li class="li">Solicite seu usuário e senha de api da Auditto;</li>
+    <li class="li">Libere o acesso do servidor a página: https://admin.auditto.com.br ;</li>
+    </ul>
+
 </div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+        No appserver.ini tag SLLConfigure:
+</div>
+     
+<textarea class="box" autosize readonly="true" >
+        
+    [SSLConfigure]
+    SSL2      = 1
+    SSL3      = 1
+    TLS1_0    = 1
+    TLS1_1    = 1
+    TLS1_2    = 1
+    Verbose   = 1
+    Bugs      = 1
+    State     = 1
+    CacheSize = 32
+</textarea>
     
 <div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
     Programa XMLPU001:
 </div>
  
-<textarea class="box" readonly="true" >
+<textarea class="box" autosize readonly="true" >
     
    User Function XMLPU001
 

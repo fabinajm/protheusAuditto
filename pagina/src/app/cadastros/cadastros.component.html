@@ -1,0 +1,158 @@
+<h1 class="titulo" >
+
+    <div fxLayout="col" fxLayoutAlign="center start" fxLayoutGap="30px">
+        <span>Cadastros</span>         
+    </div>
+    
+</h1>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Essa rotina faz a Integração dos cadastros bases do Protheus para o Auditto, esses cadastros podem ser revisados no Auditto para retornarem depois para o Protheus, mas essa revisão é a cargo do Cliente, não é obrigatória. Essa integração está separada em três modalidades: Cadastro, Movimento e Auxiliar. Apenas a modalidade de cadastro pode ser revisada.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    O Protheus busca as informações que são enviadas para o Auditto, caso elas sofram alguma alteração o programa a envia novamente, elas são importantes para realizar o vinculo com os documentos, como por exemplo, o produto fornecedor x cliente para entrada da NFE.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Já está configurado por default o envio das informações de Fornecedor, Produto - Materiais, Produto - Serviços, Amarração de Produtos e Pedido de Compra. Os principais filtros e campos já estão configurados e caso algum campo precise de uma consulta auxiliar o sistema também envia essa tabela para o Auditto.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Os filtros de consulta dos dados, as tabelas e os campos, podem ser modificados via ponto de entrada, os detalhes se encontram neste mesmo tutorial.
+</div>
+
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start">
+    
+    <ul class="ul">Pré-Requisitos:
+    <li class="li">Instalador rodado;</li>
+    <li class="li">Integrador configurado;</li>
+    <li class="li">Patch de Cadastro compilada;</li>
+    </ul>
+
+</div>
+
+<section id="tp1Cadastros">
+    <h2 class="subtit" >
+    
+        <div fxLayout="col" fxLayoutAlign="start start" fxLayoutGap="30px">
+            <li><span>Funcionamento:</span></li>
+        </div>
+        
+    </h2>
+</section>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    O sistema cria três tabelas por empresa/filial para fazer o controle da integração, elas são tabelas verticalizadas pois são totalmente flexiveis.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    A estrutura das tabelas SX3EXPZZXX, DADEXPCABZZXX e DADEXPITMZZXX, onde ZZ é o código da Empresa e XX é o código da Filial. Ele faz o controle de alteração x envio x recebimento das informações com o Auditto. O sistema guarda a revisão das informações para comparação.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/cad_sx3_exp.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/cad_cab_exp.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/cad_itm_exp.png" class="img-fluid" />
+</div>
+
+<section id="tp2Cadastros">
+    <h2 class="subtit" >
+    
+        <div fxLayout="col" fxLayoutAlign="start start" fxLayoutGap="30px">
+            <li><span>Pontos de Entrada:</span></li>
+        </div>
+        
+    </h2>
+</section>
+
+<div fxLayout="col" fxLayoutAlign="start start" fxLayoutGap="30px">
+    <ul>
+    <li>XMLPU007 - Para adicionar tabelas na integração ou/e modificar filtros, caso adicione uma tabela é preciso criar o XMLPU008 para adicionar campos a essa tabela.</li>
+    </ul>
+</div>
+
+<textarea class="box" autosize readonly="true">
+
+    User Function XMLPU007
+
+    Local aTab := Paramixb
+    
+    /****Exemplo de preenchimento********
+        aadd(aTab,{"SB1_SRV","CAD","B1_TIPO = 'SV'"                                                    })
+        aadd(aTab,{"SC7"    ,"MOV","( C7_QUANT - C7_QUJE ) > 0 AND C7_RESIDUO = ' ' AND C7_ENCER = ' '"})
+    ********/
+    
+    Return aTab
+</textarea>
+
+<div fxLayout="col" fxLayoutAlign="start start" fxLayoutGap="30px">
+    <ul>
+    <li>XMLPU008 - Para adicionar campos na integração.
+    </ul>
+</div>
+
+<textarea class="box" autosize readonly="true" >
+
+    User Function XMLPU008
+
+    Local cTab  := Paramixb[1]
+    Local aCpos := Paramixb[2]
+    
+    /****Exemplo de preenchimento********
+        1-Campo, 2 - S para revisar o campo no Auditto e N para não revisar o campo.
+    
+        aadd(aCpos,{'B1_DESC','N'})
+        aadd(aCpos,{'B1_POSIPI','S'})
+    ********/
+    
+    Return aCpos
+</textarea>
+
+<div fxLayout="col" fxLayoutAlign="start start" fxLayoutGap="30px">
+    <ul>
+    <li>XMLPU009 - Recebe os arrays detalhados da SX3 e dados das tabelas.
+    </ul>
+</div>
+
+<textarea class="box" autosize readonly="true" >
+
+    User Function XMLPU009
+
+    Local aSX3  := Paramixb[1]
+    Local aTabs := Paramixb[2]
+    
+    /****Exemplo de preenchimento********
+    
+    cTp:
+         CAD - Cadastro
+         MOV - Movimento
+         AUX - Auxiliar
+    
+    cFil: Filtro na tabela.
+    
+        aadd(aTabs,{ cTab, AllTrim(SX2->X2_NOME), SX2->X2_UNICO, cFil, aCpos, cTp, .F. } )
+        
+        aadd(aSX3,{ aTabs[a][1],SX3->X3_CAMPO,;
+                    {"X3_ORDEM"  ,SX3->X3_ORDEM  },;
+                    {"X3_TIPO"   ,SX3->X3_TIPO   },;
+                    {"X3_TAMANHO",SX3->X3_TAMANHO},;
+                    {"X3_DECIMAL",SX3->X3_DECIMAL},;
+                    {"X3_TITULO" ,SX3->X3_TITULO },;
+                    {"X3_DESCRIC",SX3->X3_DESCRIC},;
+                    {"X3_F3"     ,SX3->X3_F3     },;
+                    {"X3_REVISA" ,aCpos[b][2]    },;
+                    {"X3_CBOX"   ,SX3->X3_CBOX   } ;
+                  } )
+    ********/
+    
+    Return { aSX3, aTabs }
+</textarea>
+

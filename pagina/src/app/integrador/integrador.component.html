@@ -10,8 +10,12 @@
     Existe um programa responsável por todo o processo de integração, pois ele executa os demais programas, para isso se faz necessária a configuração dele por job.
 </div>
 
-<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
-    Pré-Requisitos: Instalador rodado e patch de algum documento de integração aplicada e configure a chave SSLConfigure no appserver.ini.
+<div class="text" fxLayout="row" fxLayoutAlign="start start">
+    
+        <ul class="ul">Pré-Requisitos:
+            <li class="li">Instalador rodado;</li> 
+            <li class="li">Patch de algum documento de integração aplicada;</li>
+        </ul>
 </div>
 
 <div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
@@ -19,22 +23,24 @@
 </div>
 
 <div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
-    Existe mais de uma forma para configuração do Job:
+    Existe mais de uma forma para configuração de Job, escolha uma:
 </div>
 
 <ul class="text">
-    <li>Via execução do smartclient;</li>
-    <li>Via appserver.ini;</li>
-    <li>Via configurador;</li>
+    <li class="li"><a pageScroll href="/integrador#tp1Integrador">Execução do smartclient;</a></li>
+    <li class="li"><a pageScroll href="/integrador#tp2Integrador">Appserver.ini;</a></li>
+    <li class="li"><a pageScroll href="/integrador#tp3Integrador">Configurador;</a></li>
 </ul>
 
-<h2 class="subtit" >
+<section id="tp1Integrador">
+<h2 class="subtit">
 
     <div fxLayout="col" fxLayoutAlign="start start" fxLayoutGap="30px">
-        <span>1) Via execução do smartclient:</span>         
+        <li><span>Execução do smartclient:</span></li>
     </div>
     
 </h2>
+</section>
 
 <div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
     O protheus pode ser executado sem tela, para isso você configura o atalho para execução por comando de linha, ficará assim:
@@ -42,26 +48,28 @@
 
 <ul class='text'>
     <li>No Windows: c:\totvs\smartclient\smartclient.exe -q -m -c=tcp -e=local -p=U_XMLJJ001</li>
-    <li>No Linux: /totvs/smartclient/smartclient -m -q -m -c=tcp -e=local -p=U_XMLJJ001</li>
+    <li>No Linux: /totvs/smartclient/smartclient -q -m -c=tcp -e=local -p=U_XMLJJ001</li>
 </ul>
 
 <div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
     Você pode agendar no seu servidor a execução do comando no tempo que precisar e verificar a correta execução no console.log.
 </div>
 
+<section id="tp2Integrador">
 <h2 class="subtit" >
 
     <div fxLayout="col" fxLayoutAlign="start start" fxLayoutGap="30px">
-        <span>2) Via appserver.ini:</span>         
+        <li><span> Appserver.ini:</span></li>         
     </div>
     
 </h2>
+</section>
 
 <div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
     Você pode executar o programa em um serviço de appserver do servidor, abra o arquivo appserver.ini, e inclua as chaves:
 </div>
 
-<textarea class="box" readonly="true" >
+<textarea class="box" autosize readonly="true" >
 
 	[OnStart]
 	Jobs=IntAudit
@@ -76,13 +84,15 @@
     Reinicie o serviço e verifique a chamada da execução no console.log.
 </div>
  
+<section id="tp3Integrador">
 <h2 class="subtit" >
 
     <div fxLayout="col" fxLayoutAlign="start start" fxLayoutGap="30px">
-        <span>3) Via configurador:</span>         
+        <li><span>Configurador:</span></li>
     </div>
     
 </h2>
+</section>
 
 <div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
     Recomenda-se criar um serviço só para o schedule do Protheus, segue a demonstração de como configurar e agendar uma execução.

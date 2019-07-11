@@ -8,7 +8,13 @@
    position: relative;
    z-index: 0;
  }
- 
+
+ .menuSide {
+  background-color: rgb(235, 230, 230);
+  font-style: normal;
+  font-size: smaller;
+ }
+
  @media screen and (min-width: 960px) {
    mat-toolbar {
       z-index: 50;
@@ -36,6 +42,12 @@
    }
  }
 
+ .container {
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  border: 1px solid #555;
+}
 
  a:hover, a:active{
    color: lightgray;
