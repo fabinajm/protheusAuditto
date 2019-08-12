@@ -1,3 +1,4 @@
+
 <h1 class="titulo" >
 
     <div fxLayout="col" fxLayoutAlign="center start" fxLayoutGap="30px">
@@ -44,23 +45,62 @@
 </section>
 
 <div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
-    O sistema cria três tabelas por empresa/filial para fazer o controle da integração, elas são tabelas verticalizadas pois são totalmente flexiveis.
+    O sistema cria tabelas por empresa/filial/tabela para fazer o controle da integração, elas são tabelas verticalizadas pois são totalmente flexiveis.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start">
+    
+    <ul class="ul">As tabelas para controle das integrações (ZZ é a Empresa, XX é a Filial e YYY é a tabela):
+    <li class="li">Tabelas (DADEXPTABZZXX);</li>
+    <li class="li">Campos (DADEXPCPOZZXX);</li>
+    <li class="li">Dicionário (SX3EXPZZXX);</li>
+    <li class="li">Dados (DADEXPCABZZXXYYY, DADEXPITMZZXXYYY);</li>
+    </ul>
+
 </div>
 
 <div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
-    A estrutura das tabelas SX3EXPZZXX, DADEXPCABZZXX e DADEXPITMZZXX, onde ZZ é o código da Empresa e XX é o código da Filial. Ele faz o controle de alteração x envio x recebimento das informações com o Auditto. O sistema guarda a revisão das informações para comparação.
+    Essas tabelas servem para o sistem fazer a comparação daquilo que foi enviado versus o que existe no sistema. Quando um cadastro é alterado ou incluído ele gera um processo de revisão que é enviado para o Auditto. Existe uma tela para acompanhar as integrações e as revisões.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    A tela é dividida em duas partes, a de cima é o controle das revisões a de baixo o controle dos documentos e suas etapas.
 </div>
 
 <div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
-    <img src="assets/img/cad_sx3_exp.png" class="img-fluid" />
+    <img src="assets/img/painel.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Pode-se clicar no número são demonstrados os itens que o representam.
 </div>
 
 <div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
-    <img src="assets/img/cad_cab_exp.png" class="img-fluid" />
+    <img src="assets/img/revisados.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    No canto inferior direito pode-se verificar a data e hora do ultimo sincronismo entre os sistemas.
 </div>
 
 <div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
-    <img src="assets/img/cad_itm_exp.png" class="img-fluid" />
+    <img src="assets/img/painel_ult_int.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    O formulário de revisão de cadastros é dinâmico conforme pontos de entrada selecionados pelo cliente, por default alguns campos já estão selecionados para revisão. A obrigatoriedade dos campos não está amarrada ao dicionário para que o cliente possa selecionar campos distintos como obrigatórios no processo de revisão, criando como dois formulários um mais simples de inclusão e outro mais especifico de revisão.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/formulario.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    O sistema envia automaticamente a tabela auxiliar de campos do formulário conforme identificação no dicionário de dados (SX3).
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/formulario_combo.png" class="img-fluid" />
 </div>
 
 <section id="tp2Cadastros">
@@ -107,10 +147,10 @@
     Local aCpos := Paramixb[2]
     
     /****Exemplo de preenchimento********
-        1-Campo, 2 - S para revisar o campo no Auditto e N para não revisar o campo.
+        1-Campo, 2 - S para revisar o campo no Auditto e N para não revisar o campo, 3 - S para obrigatório e N para não obrigatório.
     
-        aadd(aCpos,{'B1_DESC','N'})
-        aadd(aCpos,{'B1_POSIPI','S'})
+        aadd(aCpos,{'B1_DESC'  ,'N','N'}) //Campo não revisado e não obrigatório
+        aadd(aCpos,{'B1_POSIPI','S','S'}) //Campo revisado e obrigatório
     ********/
     
     Return aCpos
@@ -140,7 +180,7 @@
     
         aadd(aTabs,{ cTab, AllTrim(SX2->X2_NOME), SX2->X2_UNICO, cFil, aCpos, cTp, .F. } )
         
-        aadd(aSX3,{ aTabs[a][1],SX3->X3_CAMPO,;
+        aadd(aSX3,{ aTabs[a][1]  ,SX3->X3_CAMPO,;
                     {"X3_ORDEM"  ,SX3->X3_ORDEM  },;
                     {"X3_TIPO"   ,SX3->X3_TIPO   },;
                     {"X3_TAMANHO",SX3->X3_TAMANHO},;
@@ -149,6 +189,7 @@
                     {"X3_DESCRIC",SX3->X3_DESCRIC},;
                     {"X3_F3"     ,SX3->X3_F3     },;
                     {"X3_REVISA" ,aCpos[b][2]    },;
+                    {"X3_OBRIGAT",aCpos[b][3]    },;
                     {"X3_CBOX"   ,SX3->X3_CBOX   } ;
                   } )
     ********/
@@ -156,3 +197,18 @@
     Return { aSX3, aTabs }
 </textarea>
 
+<div fxLayout="col" fxLayoutAlign="start start" fxLayoutGap="30px">
+    <ul>
+    <li>XMLPU010 - Manipula query de seleção de dados para exportação dos cadastros e movimentos.
+    </ul>
+</div>
+
+<textarea class="box" autosize readonly="true" >
+
+    User Function XMLPU010
+
+    Local cTab := Paramixb[1]
+    Local cQry := Paramixb[2]
+    
+    Return cQry
+</textarea>
