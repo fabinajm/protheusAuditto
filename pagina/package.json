@@ -3,18 +3,21 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.6",
     "@angular/cdk": "^9.1.2",
+    "@angular/cli": "~9.0.6",
     "@angular/common": "^9.0.6",
     "@angular/compiler": "~9.0.6",
+    "@angular/compiler-cli": "^9.0.6",
     "@angular/core": "~9.0.6",
     "@angular/flex-layout": "^9.0.0-beta.29",
     "@angular/forms": "^9.0.6",
@@ -23,6 +26,7 @@
     "@angular/platform-browser-dynamic": "~9.0.6",
     "@angular/router": "~9.0.6",
     "bootstrap": "^4.3.1",
+    "express": "^4.17.1",
     "jquery": "^3.4.1",
     "lodash": "^4.17.14",
     "lodash-migrate": "^0.3.16",
@@ -30,9 +34,11 @@
     "ngx-page-scroll": "^6.0.2",
     "ngx-page-scroll-core": "^6.0.2",
     "ngx-textarea-autosize": "^2.0.3",
+    "path": "^0.12.7",
     "popper.js": "^1.15.0",
     "rxjs": "^6.5.4",
     "tslib": "^1.10.0",
+    "typescript": "~3.7.5",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
@@ -55,5 +61,9 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.7.5"
+  },
+  "engines": {
+    "node": "10.16.0",
+    "npm": "6.14.2"
   }
 }
