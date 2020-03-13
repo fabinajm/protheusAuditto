@@ -1,7 +1,6 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -18,6 +17,47 @@ import { NfeComponent } from './nfe/nfe.component';
 import { CadastrosComponent } from './cadastros/cadastros.component';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { NfsComponent } from './nfs/nfs.component';
+import { Menu2Component } from './menu2/menu2.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import {A11yModule} from '@angular/cdk/a11y';
+import {BidiModule} from '@angular/cdk/bidi';
+import {ObserversModule} from '@angular/cdk/observers';
+import {OverlayModule} from '@angular/cdk/overlay';
+import {PlatformModule} from '@angular/cdk/platform';
+import {PortalModule} from '@angular/cdk/portal';
+import {CdkStepperModule} from '@angular/cdk/stepper';
+import {CdkTableModule} from '@angular/cdk/table';
+import {CdkTreeModule} from '@angular/cdk/tree';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
+/**
+ * NgModule that includes all Material modules.
+*/
+@NgModule({
+  exports: [
+    // CDK
+    A11yModule,
+    BidiModule,
+    ObserversModule,
+    OverlayModule,
+    PlatformModule,
+    PortalModule,
+    CdkStepperModule,
+    CdkTableModule,
+    CdkTreeModule,
+    DragDropModule,
+    // Material
+    MatIconModule,
+    MatListModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatButtonModule
+  ]
+})
+export class MaterialModule {}
 
 @NgModule({
   declarations: [
@@ -28,7 +68,9 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
     InstaladorComponent,
     IntegradorComponent,
     NfeComponent,
-    CadastrosComponent
+    CadastrosComponent,
+    NfsComponent,
+    Menu2Component
   ],
   imports: [
     BrowserModule,
@@ -38,6 +80,7 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
     MatListModule,
     MatIconModule,
     MatButtonModule,
+    MatMenuModule,
     FlexLayoutModule,
     AppRoutingModule,
     FormsModule,

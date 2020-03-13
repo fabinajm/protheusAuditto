@@ -1,0 +1,6 @@
+{
+    "git.allowForcePush": true,
+    "git.autorefresh": true,
+    "git.showProgress": true,
+    "git.openDiffOnClick": true
+}
