@@ -2,5 +2,13 @@
     "git.allowForcePush": true,
     "git.autorefresh": true,
     "git.showProgress": true,
-    "git.openDiffOnClick": true
+    "git.openDiffOnClick": true,
+    "files.encoding": "utf8",
+    "editor.autoIndent": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.formatOnSaveTimeout": 750,
+    "totvsLanguageServer.welcomePage": false,
+    "totvsLanguageServer.askEncodingChange": true
 }

@@ -1,0 +1,33 @@
+<h1 class="titulo" >
+
+    <div fxLayout="col" fxLayoutAlign="center start" fxLayoutGap="30px">
+        <span>Pré-requisitos</span>         
+    </div>
+        
+</h1>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+     Envie a lista de cnpj's que o conector irá utilizar e solicite sua patch, assim como, seu usuário e senha da API.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Caso não saiba utilizar o módulo Gestor Fiscal entre em contato com a Auditto e solicite o treinamento, é importante que saiba utilizar regra de-para dos impostos, rotina de entrada de documentos, amarração de serviços e escrituração de documentos.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Garanta que o seu servidor não esteja bloqueando o acesso à página: https://app.auditto.com.br/
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Aplique a patch e crie o programa XMLPU001, com os códigos das empresas que utilizará na integração, conforme exemplo:
+</div>
+ 
+<textarea class="box" autosize readonly="true" >
+    
+   User Function XMLPU001
+
+   //array com os códigos das empresas (M0_CODIGO)
+   Local aEmp := {"01","02","03","99"}
+            
+   Return aEmp
+</textarea>

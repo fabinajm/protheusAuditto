@@ -1,0 +1,70 @@
+<h1 class="titulo">
+
+    <div fxLayout="col" fxLayoutAlign="center start" fxLayoutGap="30px">
+        <span>Financeiro</span>
+    </div>
+
+</h1>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    Para habilitar que a parte do financeiro informada no Auditto seja carregada corretamente no Protheus, alguns pontos
+    de entrada precisam ser ativados.
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    MT103SE2 - Ponto de entrada para adicionar campos no financeiro da NF de Entrada.
+</div>
+
+<textarea class="box" autosize readonly="true">
+
+    User Function MT103SE2
+
+    Local aHead := Paramixb[1]
+
+    If ! Empty(GetMV("ADT_TABCAB",,""))
+
+        //Inclui o código de barras no preenchimento do título da NFE.
+        aHead := U_XMLAP002(aHead)
+
+    EndIf
+
+    Return aHead
+ </textarea>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    MTColSE2 - Ponto de entrada para atualizar os vencimentos conforme duplicatas do XML.
+</div>
+
+<textarea class="box" autosize readonly="true">
+
+    User Function MTColSE2
+
+    Local aColsSE2 := Paramixb[1]
+
+    If ! Empty(GetMV("ADT_TABCAB",,""))
+
+        aColsSE2 := U_XMLAP001(aColsSE2)
+
+    EndIf
+
+    Return aColsSE2
+ </textarea>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+    MT100GE2 - Ponto de entrada na geração dos dados financeiros.
+</div>
+
+<textarea class="box" autosize readonly="true">
+
+    User Function MT100GE2
+
+    Local aLin  := Paramixb[1]
+    Local aHead := Paramixb[3]
+
+    If ! Empty(GetMV("ADT_TABCAB",,""))
+        //Grava o código de barras no título.
+        U_XMLAP003(aHead,aLin)
+    EndIf
+
+    Return
+ </textarea>

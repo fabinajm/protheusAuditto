@@ -1,51 +1,125 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
-    <mat-toolbar-row>
-      <span>Auditto & Protheus</span>             
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-        <mat-icon>menu</mat-icon>
-      </button>      
-      <span class="fill-remaining-space"></span>
-      <div fxShow="true" fxHide.lt-md="true" fxLayoutAlign="end center">
-        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-        <a (click)="setDocTitle( 'Home' )" routerLink="/home" routerLinkActive="active" mat-button>Home</a>
-        <button mat-button [matMenuTriggerFor]="insMenu">Instalador</button>   
-        <mat-menu #insMenu="matMenu" yPosition="below">
-          <button mat-menu-item (click)="setDocTitle( 'Instalador' )" routerLink="/instalador" >Item 1</button>
-          <button mat-menu-item>Item 2</button>
-        </mat-menu>   
-        <a (click)="setDocTitle( 'Integrador' )" routerLink="/integrador" routerLinkActive="active" mat-button>Integrador</a>
-        <a (click)="setDocTitle( 'Cadastros' )" routerLink="/cadastros" routerLinkActive="active" mat-button>Cadastros</a>
-        <a (click)="setDocTitle( 'NF-e' )" routerLink="/nfe" routerLinkActive="active" mat-button>NF-e</a>
-      </div>
-    </mat-toolbar-row> 
+  <mat-toolbar-row>
+    <span>Auditto & Protheus</span>
+    <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="fill-remaining-space"></span>
+    <div fxShow="true" fxHide.lt-md="true" fxLayoutAlign="end center">
+      <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+      <a (click)="setDocTitle( 'Home' )" routerLink="/home" routerLinkActive="active" mat-button>Home</a>
+      <button mat-button [matMenuTriggerFor]="insInst" routerLinkActive="active">Instalação</button>
+      <mat-menu #insInst="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setDocTitle( 'Instalação - Pré-requisitos' )"
+          routerLink="/instPreReq">Pré-requisitos</button>
+        <button mat-menu-item (click)="setDocTitle( 'Instalação - Instalador' )"
+          routerLink="/instalador">Instalador</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="config">Configuração</button>
+      <mat-menu #config="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setDocTitle( 'Configuração - Auditto' )" routerLink="/confAudt">Auditto</button>
+        <button mat-menu-item (click)="setDocTitle( 'Configuração - Protheus' )"
+          routerLink="/confProt">Protheus</button>
+        <button mat-menu-item (click)="setDocTitle( 'Configuração - Pontos de Entrada' )"
+          routerLink="/confPtoEnt">Pontos de Entrada</button>
+        <button mat-menu-item (click)="setDocTitle( 'Configuração - Financeiro' )"
+          routerLink="/confFin">Financeiro</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="danfe">Danfe (NFE/CTE)</button>
+      <mat-menu #danfe="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setDocTitle( 'Danfe - Processo' )" routerLink="/dnfProc"
+          routerLinkActive="active">Processo</button>
+        <button mat-menu-item (click)="setDocTitle( 'Danfe - Cadastros' )" routerLink="/dnfCad"
+          routerLinkActive="active">Cadastros</button>
+        <button mat-menu-item (click)="setDocTitle( 'Danfe - Entrada NFE/CTE' )" routerLink="/dnfEnt"
+          routerLinkActive="active">Entrada NFE/CTE</button>
+        <button mat-menu-item (click)="setDocTitle( 'Danfe - Conversão NFE' )" routerLink="/convNfe"
+          routerLinkActive="active">Conversão NFE</button>
+        <button mat-menu-item (click)="setDocTitle( 'Danfe - Conversão CTE' )" routerLink="/convCte"
+          routerLinkActive="active">Conversão CTE</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="nfse">NFS-e</button>
+      <mat-menu #nfse="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setDocTitle( 'NFS-e - Processo' )" routerLink="/nfsProc">Processo</button>
+        <button mat-menu-item (click)="setDocTitle( 'NFS-e - Cadastros' )" routerLink="/nfsCad">Cadastros</button>
+        <button mat-menu-item (click)="setDocTitle( 'NFS-e - Entrada' )" routerLink="/nfsEnt">Entrada</button>
+        <button mat-menu-item (click)="setDocTitle( 'NFS-e - Conversão' )" routerLink="/nfsConv">Conversão</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="notaDebito">Nota de Débito</button>
+      <mat-menu #notaDebito="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setDocTitle( 'ND - Processo' )" routerLink="/ndProc">Processo</button>
+        <button mat-menu-item (click)="setDocTitle( 'ND - Entrada' )" routerLink="/ndEnt">Entrada</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="apuracao">Apuração</button>
+      <mat-menu #apuracao="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setDocTitle( 'Apuração - Processo' )" routerLink="/aprProc">Processo</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-sidenav-container class="main-sidenav-container">
-    <mat-sidenav #sidenav fullscreen>
-      <mat-nav-list>
-        <a (click)="setDocTitle( 'Home' )" routerLink="/home" routerLinkActive="active" mat-list-item>Home</a>
-        <button mat-button [matMenuTriggerFor]="insMenu">Instalador</button>   
-        <mat-menu #insMenu="matMenu" yPosition="below">
-          <button mat-menu-item (click)="setDocTitle( 'Instalador' )" routerLink="/instalador" >Item 1</button>
-          <button mat-menu-item>Item 2</button>
-        </mat-menu>  
-        <a (click)="setDocTitle( 'Integrador' )" routerLink="/integrador" routerLinkActive="active" mat-list-item>Integrador</a>
-        <a (click)="setDocTitle( 'Cadastros' )" routerLink="/cadastros" routerLinkActive="active" mat-list-item>Cadastros</a>
-        <a (click)="setDocTitle( 'NF-e' )" routerLink="/nfe" routerLinkActive="active" mat-list-item>NF-e</a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content fxFlexFill>
-        <mat-drawer-container>
-            <mat-drawer class="menuSide" mode="side" opened>
-                <a *ngFor="let navItem of mainMenuItems" 
-                   class="menuSide"
-                   [routerLink]="[navItem.path]" mat-button>
-                    {{navItem.title}}
-                </a>
-            </mat-drawer>
-            <mat-drawer-content>
-              <router-outlet></router-outlet>
-            </mat-drawer-content>
-        </mat-drawer-container>
-    </mat-sidenav-content>
+  <mat-sidenav #sidenav fullscreen>
+    <mat-nav-list>
+      <a (click)="setDocTitle( 'Home' )" routerLink="/home" routerLinkActive="active" mat-button>Home</a>
+      <button mat-button [matMenuTriggerFor]="insInst" routerLinkActive="active">Instalação</button>
+      <mat-menu #insInst="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setDocTitle( 'Instalação - Pré-requisitos' )"
+          routerLink="/instPreReq">Pré-requisitos</button>
+        <button mat-menu-item (click)="setDocTitle( 'Instalação - Instalador' )"
+          routerLink="/instalador">Instalador</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="config">Configuração</button>
+      <mat-menu #config="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setDocTitle( 'Configuração - Auditto' )" routerLink="/confAudt">Auditto</button>
+        <button mat-menu-item (click)="setDocTitle( 'Configuração - Protheus' )"
+          routerLink="/confProt">Protheus</button>
+        <button mat-menu-item (click)="setDocTitle( 'Configuração - Pontos de Entrada' )"
+          routerLink="/confPtoEnt">Pontos de Entrada</button>
+        <button mat-menu-item (click)="setDocTitle( 'Configuração - Financeiro' )"
+          routerLink="/confFin">Financeiro</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="danfe">Danfe (NFE/CTE)</button>
+      <mat-menu #danfe="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setDocTitle( 'Danfe - Processo' )" routerLink="/dnfProc"
+          routerLinkActive="active">Processo</button>
+        <button mat-menu-item (click)="setDocTitle( 'Danfe - Cadastros' )" routerLink="/dnfCad"
+          routerLinkActive="active">Cadastros</button>
+        <button mat-menu-item (click)="setDocTitle( 'Danfe - Entrada NFE/CTE' )" routerLink="/dnfEnt"
+          routerLinkActive="active">Entrada NFE/CTE</button>
+        <button mat-menu-item (click)="setDocTitle( 'Danfe - Conversão NFE' )" routerLink="/convNfe"
+          routerLinkActive="active">Conversão NFE</button>
+        <button mat-menu-item (click)="setDocTitle( 'Danfe - Conversão CTE' )" routerLink="/convCte"
+          routerLinkActive="active">Conversão CTE</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="nfse">NFS-e</button>
+      <mat-menu #nfse="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setDocTitle( 'NFS-e - Processo' )" routerLink="/nfsProc">Processo</button>
+        <button mat-menu-item (click)="setDocTitle( 'NFS-e - Cadastros' )" routerLink="/nfsCad">Cadastros</button>
+        <button mat-menu-item (click)="setDocTitle( 'NFS-e - Entrada' )" routerLink="/nfsEnt">Entrada</button>
+        <button mat-menu-item (click)="setDocTitle( 'NFS-e - Conversão' )" routerLink="/nfsConv">Conversão</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="notaDebito">Nota de Débito</button>
+      <mat-menu #notaDebito="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setDocTitle( 'ND - Processo' )" routerLink="/ndProc">Processo</button>
+        <button mat-menu-item (click)="setDocTitle( 'ND - Entrada' )" routerLink="/ndEnt">Entrada</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="apuracao">Apuração</button>
+      <mat-menu #apuracao="matMenu" yPosition="below">
+        <button mat-menu-item (click)="setDocTitle( 'Apuração - Processo' )" routerLink="/aprProc">Processo</button>
+      </mat-menu>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content fxFlexFill>
+    <mat-drawer-container>
+      <mat-drawer class="menuSide" mode="side" opened>
+        <a *ngFor="let navItem of mainMenuItems" class="menuSide" [routerLink]="[navItem.path]" mat-button>
+          {{navItem.title}}
+        </a>
+      </mat-drawer>
+      <mat-drawer-content>
+        <router-outlet></router-outlet>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </mat-sidenav-content>
 </mat-sidenav-container>

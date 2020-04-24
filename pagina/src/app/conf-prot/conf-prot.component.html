@@ -1,0 +1,52 @@
+<h1 class="titulo" >
+
+    <div fxLayout="col" fxLayoutAlign="center start" fxLayoutGap="30px">
+        <span>Protheus</span>         
+    </div>
+        
+</h1>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+   
+    <ul class="ul">Caso use Pedido de compras, existem dois parâmetros que podem ser configurados:
+        <li class="li">ADT_PCOPER - Campo de operacao do Pedido de Compras</li>
+        <li class="li">ADT_NUMPRC - Campo de numero de processo do Pedido de Compras </li>
+    </ul>
+    
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/conf-prot-pc.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+   
+    <ul class="ul">Código de produto para entrada de documentos, será utilizado apenas quando não se usa pedido de compras e nem documento original:
+        <li class="li">ADT_NFSPRD - Código de produto para entrada de Nota Fiscal de Serviço</li>
+        <li class="li">ADT_CTEPRD - Código de produto para entrada de Documento de Transporte</li>
+        <li class="li">ADT_NDPRD  - Código de produto para entrada de Nota de Débito</li>
+    </ul>
+    
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="30px">
+    <img src="assets/img/conf-prot-prd.png" class="img-fluid" />
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+   
+    <ul class="ul">Caso use TES Inteligente ou deseje por algum motivo não utilizar as regras fiscais do Auditto, existem dois parâmetros:
+        <li class="li">ADT_TESNEW - Cria a TES senão encontrar conforme regras do Auditto ?</li>
+        <li class="li">ADT_TESALT - Altera TES caso encontre mas tenho algo diferente em relação as regras do Auditto ?</li>
+    </ul>
+    
+</div>
+
+<div class="text" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px">
+   
+    <ul class="ul">O sistema gera log no console.log de todo o passo de integração e é possível também que gere um json de todo o arquivo que é enviado, para isso existem dois parâmetros:
+        <li class="li">ADT_GERLOG - Gera LOG de processamento no console.log ?</li>
+        <li class="li">ADT_GERJSN - Gera o json dos cadastros e movimentos no protheus_data para log ?</li>
+    </ul>
+    
+</div>
